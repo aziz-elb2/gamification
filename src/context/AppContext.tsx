@@ -18,15 +18,40 @@ interface AppContextType {
 const AppContext = createContext<AppContextType | undefined>(undefined);
 
 export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [points, setPoints] = useState<number>(0);
-  const [tasks, setTasks] = useState<Task[]>([
-    { id: '1', title: 'Plan the week', description: 'Map out major goals', points: 50 },
-    { id: '2', title: 'Morning Workout', description: '30 mins of activity', points: 30 },
-  ]);
-  const [rewards, setRewards] = useState<Reward[]>([
-    { id: '1', title: 'Gaming Session', cost: 100 },
-    { id: '2', title: 'Favorite Coffee', cost: 50 },
-  ]);
+  // Load initial state from localStorage or use defaults
+  const [points, setPoints] = useState<number>(() => {
+    const saved = localStorage.getItem('ql_points');
+    return saved ? parseInt(saved) : 0;
+  });
+
+  const [tasks, setTasks] = useState<Task[]>(() => {
+    const saved = localStorage.getItem('ql_tasks');
+    return saved ? JSON.parse(saved) : [
+      { id: '1', title: 'Plan the week', description: 'Map out major goals', points: 50 },
+      { id: '2', title: 'Morning Workout', description: '30 mins of activity', points: 30 },
+    ];
+  });
+
+  const [rewards, setRewards] = useState<Reward[]>(() => {
+    const saved = localStorage.getItem('ql_rewards');
+    return saved ? JSON.parse(saved) : [
+      { id: '1', title: 'Gaming Session', cost: 100 },
+      { id: '2', title: 'Favorite Coffee', cost: 50 },
+    ];
+  });
+
+  // Persist state changes to localStorage
+  useEffect(() => {
+    localStorage.setItem('ql_points', points.toString());
+  }, [points]);
+
+  useEffect(() => {
+    localStorage.setItem('ql_tasks', JSON.stringify(tasks));
+  }, [tasks]);
+
+  useEffect(() => {
+    localStorage.setItem('ql_rewards', JSON.stringify(rewards));
+  }, [rewards]);
 
   // Task Actions
   const addTask = (task: Omit<Task, 'id'>) => {
