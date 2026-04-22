@@ -75,7 +75,6 @@ const FormModal: React.FC<FormModalProps> = ({ isOpen, onClose, onSave, onDelete
                 <input
                   type="text"
                   id="input-title"
-                  autoFocus
                   className="w-full px-4 py-3 rounded-xl border-2 border-slate-100 focus:border-indigo-500 focus:ring-0 outline-none transition-all"
                   placeholder={type === 'task' ? "e.g. Read for 20 mins" : "e.g. 1 hour of Video Games"}
                   value={title}

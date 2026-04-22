@@ -69,8 +69,8 @@ const Dashboard = () => {
       {/* Header */}
       <header className="glass-sleek px-6 pt-8 pb-5 flex justify-between items-center z-10 shrink-0 sticky top-0 border-b border-slate-200/50">
         <div className="flex flex-col">
-          <h1 id="app-title" className="text-xl font-black text-slate-800 tracking-tighter leading-none uppercase">QuestLog</h1>
-          <p className="text-[10px] font-bold text-slate-400 mt-1 uppercase tracking-widest">Level 1 Adventurer</p>
+          <h1 id="app-title" className="text-xl font-black text-slate-800 tracking-tighter leading-none uppercase">Gamification</h1>
+          <p className="text-[10px] font-bold text-slate-400 mt-1 uppercase tracking-widest">Phoenix ex cinere surgit</p>
         </div>
         <div className="flex items-center gap-3">
           <motion.div 
@@ -100,7 +100,7 @@ const Dashboard = () => {
               activeTab === 'tasks' ? 'bg-white text-indigo-600 shadow-sm border border-slate-100' : 'text-slate-400'
             }`}
           >
-            Quests
+            Tasks
           </button>
           <button
             id="tab-rewards"
@@ -109,7 +109,7 @@ const Dashboard = () => {
               activeTab === 'rewards' ? 'bg-white text-emerald-600 shadow-sm border border-slate-100' : 'text-slate-400'
             }`}
           >
-            Bazaar
+            Rewards
           </button>
         </div>
       </nav>
@@ -126,7 +126,7 @@ const Dashboard = () => {
               className="flex flex-col h-full space-y-4"
             >
               <div className="flex justify-between items-center shrink-0">
-                <h2 className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Active Quests</h2>
+                <h2 className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Tasks</h2>
               </div>
               
               <div className="flex-grow overflow-y-auto no-scrollbar space-y-3 pb-32">
@@ -137,7 +137,7 @@ const Dashboard = () => {
                       <CheckCircle2 size={64} className="relative text-indigo-200" />
                     </div>
                     <p className="text-lg font-black text-slate-800 tracking-tight mb-2">All Clear!</p>
-                    <p className="text-sm font-medium text-slate-400 leading-relaxed">Your quest log is empty. Time to forge some new goals or enjoy your spoils.</p>
+                    <p className="text-sm font-medium text-slate-400 leading-relaxed">Enjoy with a break.</p>
                   </div>
                 ) : (
                   tasks.map((task) => (
@@ -150,7 +150,7 @@ const Dashboard = () => {
                         <h3 className="font-bold text-slate-800 text-base tracking-tight truncate">{task.title}</h3>
                         <div className="mt-1.5 flex items-center gap-1.5 text-[10px] font-black text-emerald-600 tracking-wider uppercase">
                           <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                          Earn {task.points} Points
+                          {task.points} Pts
                         </div>
                       </div>
                       <div className="flex items-center gap-1.5">
@@ -181,7 +181,7 @@ const Dashboard = () => {
               className="flex flex-col h-full space-y-4"
             >
               <div className="flex justify-between items-center shrink-0">
-                <h2 className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">The Great Bazaar</h2>
+                <h2 className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Rewards</h2>
               </div>
 
               <div className="flex-grow overflow-y-auto no-scrollbar space-y-3 pb-32">
@@ -191,8 +191,8 @@ const Dashboard = () => {
                       <div className="absolute inset-0 bg-emerald-100 blur-3xl opacity-50 rounded-full" />
                       <Gift size={64} className="relative text-emerald-200" />
                     </div>
-                    <p className="text-lg font-black text-slate-800 tracking-tight mb-2">Bazaar is Closed</p>
-                    <p className="text-sm font-medium text-slate-400 leading-relaxed">No rewards available. Add some high-tier items to keep your ambition alive.</p>
+                    <p className="text-lg font-black text-slate-800 tracking-tight mb-2">Rewards is empty</p>
+                    <p className="text-sm font-medium text-slate-400 leading-relaxed">No rewards available. Add some rewards to keep your motivation alive.</p>
                   </div>
                 ) : (
                   rewards.map((reward) => (
@@ -202,13 +202,13 @@ const Dashboard = () => {
                       className="card-sleek p-5 flex items-center justify-between group relative transition-all active:scale-[0.98]"
                     >
                       <div className="flex items-center flex-1 min-w-0 pr-4">
-                        <div className="w-12 h-12 bg-indigo-50 rounded-2xl flex items-center justify-center text-indigo-600 mr-4 shrink-0 border border-indigo-100 shadow-inner">
-                          <Gift size={24} />
+                        <div className="w-8 h-8 bg-indigo-50 rounded-xl flex items-center justify-center text-indigo-600 mr-4 shrink-0 border border-indigo-100 shadow-inner">
+                          <Gift size={16} />
                         </div>
                         <div className="min-w-0 flex-1">
                           <h3 className="font-bold text-slate-800 text-base tracking-tight truncate">{reward.title}</h3>
                           <div className="mt-1 flex items-center gap-1 text-[10px] font-black text-slate-400 uppercase tracking-[0.15em]">
-                            Cost: {reward.cost} pts
+                            {reward.cost} pts
                           </div>
                         </div>
                       </div>
@@ -228,7 +228,7 @@ const Dashboard = () => {
                               : 'bg-slate-100 text-slate-300 cursor-not-allowed border border-slate-200'
                           }`}
                         >
-                          Redeem
+                          Buy
                         </button>
                       </div>
                     </motion.div>
